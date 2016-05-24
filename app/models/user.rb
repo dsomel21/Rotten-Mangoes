@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true
 
 	def full_name
-		"#{firstname}.capitalise #{lastname}.capitalise"
+		"#{firstname} #{lastname}"
 	end
 
 end

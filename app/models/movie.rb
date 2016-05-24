@@ -23,8 +23,13 @@ class Movie < ActiveRecord::Base
 	validate :release_date_is_in_the_past
 
 	def review_average
-	  sum = reviews.sum(:rating_out_of_ten) 
-	  return sum/reviews unless sum = 0
+	  # sum = reviews.sum(:rating_out_of_ten) 
+	  # return sum/reviews unless sum = 0
+	  unless reviews.sum(:rating) == 0
+	  	reviews.sum(:rating)/reviews.size
+	  else 
+	  	return 0
+	  end
 	end
 
 	protected
