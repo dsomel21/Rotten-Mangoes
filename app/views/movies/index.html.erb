@@ -1,33 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Movies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Runtime in minutes</th>
-      <th>Description</th>
-      <th>Poster image url</th>
-      <th>Release date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.runtime_in_minutes %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.poster_image_url %></td>
-        <td><%= movie.release_date %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Movie', new_movie_path %>
+<h1>Rotten Mangoes</h1>
+<%= link_to "Submit a movie!", new_movie_path %>
+<hr>
+<% @movies.each do |movie| %>
+<%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+<h3><%= formatted_date(@movie.release_date) %></h3>
+<h4><%= movie.runtime_in_minutes %> minutes</h4>
+<p><%= movie.description %></p>
+<hr>
+<% end %>
