@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   # GET /movies/1
   def show
     @movie = Movie.find(params[:id])
+    # binding.pry
   end
 
   # GET /movies/new
@@ -25,7 +26,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
+      redirect_to movies_path, notice: "Welcome aboard, #{current_user.firstname}!"
     else
       render :new
     end
@@ -56,9 +57,13 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
+    puts '**********'
+    puts params.inspect
+    puts '**********'
     params.require(:movie).permit(
-      :name, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
+      :name, :release_date, :director, :runtime_in_minutes, :description, :image, :remove_image
       )
+
   end
 
 end

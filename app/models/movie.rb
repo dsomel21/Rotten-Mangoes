@@ -1,5 +1,10 @@
 class Movie < ActiveRecord::Base
 
+	# attr_accessible :poster_image_url
+
+	mount_uploader :image, ImageUploader
+	has_many :reviews
+
 	validates :name,
 	presence: true
 
@@ -14,8 +19,8 @@ class Movie < ActiveRecord::Base
 	validates :description,
 	presence: true
 
-	validates :poster_image_url,
-	presence: true
+	# validates :poster_image_url,
+	# presence: true
 
 	validates :release_date,
 	presence: true
