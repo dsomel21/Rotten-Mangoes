@@ -9,6 +9,10 @@ RottenMangoes::Application.routes.draw do
 
   post 'sessions/create', to: 'session#create', as: 'login'
 
+  namespace :admin do
+    resources :users
+  end
+
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
