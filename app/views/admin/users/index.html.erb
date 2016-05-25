@@ -1,0 +1,9 @@
+<h2>Users (Administration Mode)</h2>
+
+<%= paginate @users %>
+
+<% @users.each do |user| %>
+	<h2><%= user.id %>. <strong>Name: <%= link_to user.full_name, admin_user_path(user) %></strong></h2>
+	<h3>Email: <%= user.email %></h3>
+	<p>Member since: <%= user.created_at%>
+<% end %>
