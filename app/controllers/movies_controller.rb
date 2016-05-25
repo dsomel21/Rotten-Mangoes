@@ -24,6 +24,7 @@ class MoviesController < ApplicationController
 
   # POST /movies
   def create
+    # binding.pry
     @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to movies_path, notice: "Welcome aboard, #{current_user.firstname}!"
