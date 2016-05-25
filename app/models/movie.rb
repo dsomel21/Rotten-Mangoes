@@ -37,6 +37,12 @@ class Movie < ActiveRecord::Base
 	  end
 	end
 
+	# user_params = [:name, :director, :runtime_in_minutes]
+	def self.search(user_params)
+		binding.pry
+		Movie.find(:all, :conditions => ['name LIKE ?', "%#{user_params} %"])
+	end
+
 	protected
 	def release_date_is_in_the_past
 		if release_date.present?

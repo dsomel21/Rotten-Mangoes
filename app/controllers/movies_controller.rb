@@ -3,7 +3,14 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all
+    if params.include[:name] #|| params.has_key?[:director] 
+      Movie.search(params)
+    else 
+      @movies = Movie.all
+    end
+    # Title (text)
+    # Director (text)
+    # Duration
   end
 
   # GET /movies/1
@@ -48,7 +55,6 @@ class MoviesController < ApplicationController
     @movie.destroy
     redirect_to movies_path
   end
-
 
   protected
 
