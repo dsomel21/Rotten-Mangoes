@@ -4,13 +4,10 @@ class MoviesController < ApplicationController
   # GET /movies
   def index
     if params.include?(:name) || params.include?(:director) 
-      Movie.search(params)
+      @movies = Movie.search(params)
     else 
       @movies = Movie.all
     end
-    # Title (text)
-    # Director (text)
-    # Duration
   end
 
   # GET /movies/1
