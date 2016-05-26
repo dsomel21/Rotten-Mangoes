@@ -13,7 +13,7 @@ RottenMangoes::Application.routes.draw do
     resources :users #, only: [:destroy]
   end
 
-  get 'admin/users/:id/destroy', to: 'admin/users#destroy'
+  get 'admin/users/:id/destroy', to: 'admin/users#destroy', as: 'destroy_user'
 
 end
 
