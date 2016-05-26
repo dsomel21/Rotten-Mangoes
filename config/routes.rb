@@ -15,12 +15,6 @@ RottenMangoes::Application.routes.draw do
 
   get 'admin/users/:id/destroy', to: 'admin/users#destroy', as: 'destroy_user'
 
-  namespace :admin do
-    resources :users #, only: [:destroy]
-  end
-
-  get 'admin/users/:id/destroy', to: 'admin/users#destroy', as: 'destroy_user'
-
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

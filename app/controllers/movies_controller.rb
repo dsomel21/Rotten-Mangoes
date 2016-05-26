@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
   def create
     # binding.pry
     @movie = Movie.new(movie_params)
-    if @movie.save
+    if @movie.saves
       redirect_to movies_path, notice: "Welcome aboard, #{current_user.firstname}!"
     else
       render :new
