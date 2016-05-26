@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+	
 	belongs_to :user
 	belongs_to :movie
 
@@ -11,11 +12,11 @@ class Review < ActiveRecord::Base
 	validates :text,
 	presence: true
 
-	validates :rating_out_of_ten,
+	validates :rating,
 	numericality: { only_integer: true }
-	validates :rating_out_of_ten,
+	validates :rating,
 	numericality: { greater_than_or_equal_to: 1 }
-	validates :rating_out_of_ten,
+	validates :rating,
 	numericality: { less_than_or_equal_to: 10 }
 
 end

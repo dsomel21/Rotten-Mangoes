@@ -3,7 +3,11 @@ class MoviesController < ApplicationController
 
   # GET /movies
   def index
-    @movies = Movie.all
+    if params.include?(:name) || params.include?(:director) 
+      @movies = Movie.search(params)
+    else 
+      @movies = Movie.all
+    end
   end
 
   # GET /movies/1
@@ -50,7 +54,6 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
-
   protected
 
   def set_movie
@@ -58,9 +61,9 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    puts '**********'
-    puts params.inspect
-    puts '**********'
+    # puts '**********'
+    # puts params.inspect
+    # puts '**********'
     params.require(:movie).permit(
       :name, :release_date, :director, :runtime_in_minutes, :description, :image, :remove_image
       )

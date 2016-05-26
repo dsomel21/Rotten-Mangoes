@@ -37,6 +37,16 @@ class Movie < ActiveRecord::Base
 	  end
 	end
 
+	# user_params = [:name, :director, :runtime_in_minutes]
+	def self.search(params)
+		# user_params.each do |key, value|
+		# binding.pry
+			# where("name LIKE user_params[:name] OR director LIKE user_params[:director]").to_sql
+			where("name like ?", "%#{params[:name]}")
+			# OR director like ?", "%#{name: params[:name], director: params[:director]}%")
+			# binding.pry
+	end
+
 	protected
 	def release_date_is_in_the_past
 		if release_date.present?
