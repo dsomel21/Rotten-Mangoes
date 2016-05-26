@@ -1,6 +1,11 @@
 class Admin::UsersController < ApplicationController
 
+	# after_destroy :send_suspend_notification
 	before_action :require_admin
+
+	# def send_suspend_notification
+	# 	UserMailer.suspend_email(@user).deliver_now
+	# end
 
 	def require_admin
 		unless current_user.admin?
@@ -17,8 +22,6 @@ class Admin::UsersController < ApplicationController
 		@user.destroy
 		redirect_to admin_users_path
 	end
-
-	protected
 
 	def user_params
 		params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
