@@ -1,6 +1,6 @@
 <%= link_to "Back to movie", movie_path(@movie) %><br/>
 
-<h2>Write a review of <em><%= @movie.title %></em>.</h2>
+<h2>Write a review of <em><%= @movie.name %></em>.</h2>
 
 <%= form_for([@movie, @review]) do |f| %>
 <% if @review.errors.any? %>
@@ -19,8 +19,8 @@
 	<%= f.text_area "text" %>
 </div>
 <div>
-	<%= f.label :rating_out_of_ten %><br>
-	<%= f.number_field :rating_out_of_ten %>
+	<%= f.label :rating %><br>
+	<%= f.number_field :rating %>
 </div>
 <div><%= f.submit "Submit" %></div>
 <% end %>

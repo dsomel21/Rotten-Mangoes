@@ -28,6 +28,7 @@ class MoviesController < ApplicationController
 
   # POST /movies
   def create
+    # binding.pry
     @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to movies_path, notice: "Welcome aboard, #{current_user.firstname}!"
@@ -60,9 +61,9 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    puts '**********'
-    puts params.inspect
-    puts '**********'
+    # puts '**********'
+    # puts params.inspect
+    # puts '**********'
     params.require(:movie).permit(
       :name, :release_date, :director, :runtime_in_minutes, :description, :image, :remove_image
       )

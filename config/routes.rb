@@ -9,6 +9,12 @@ RottenMangoes::Application.routes.draw do
 
   post 'sessions/create', to: 'session#create', as: 'login'
 
+  namespace :admin do
+    resources :users #, only: [:destroy]
+  end
+
+  get 'admin/users/:id/destroy', to: 'admin/users#destroy', as: 'destroy_user'
+
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
