@@ -7,7 +7,7 @@ RottenMangoes::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   root to: 'movies#index'
 
-  post 'sessions/create', to: 'session#create', as: 'login'
+  post 'sessions/create', to: 'session#create'
 
   namespace :admin do
     resources :users #, only: [:destroy]

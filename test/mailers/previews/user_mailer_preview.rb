@@ -1,6 +1,6 @@
 # Preview all emails at http://localhost:3000/rails/mailers/user_mailer
 class UserMailerPreview < ActionMailer::Preview
-	def sample_mail_preview
-		UserMailer.account_suspend_email(User.first)
+	def suspend_mail_preview
+		UserMailer.suspend_email(User.first)
 	end
 end
