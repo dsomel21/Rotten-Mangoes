@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
-	# after_destroy :send_suspend_notification
 	before_action :require_admin
+	# after_destroy :send_suspend_notification
 
 	# def send_suspend_notification
 	# 	UserMailer.suspend_email(@user).deliver_now
@@ -17,11 +17,18 @@ class Admin::UsersController < ApplicationController
 		@users = User.page(params[:page]).per(10)
 	end
 
-	def destroy 
+	def destroy
 		@user = User.find(params[:id])
 		@user.destroy
 		redirect_to admin_users_path
 	end
+
+	# Admins can "switch to" any user. The app will be fooled into thinking that the other user is the one that is signed in.
+	def impersonate
+		session[:temp] = session[:user_id]
+		session[:user_id] = params[:id]
+		redirect_to root_path
+	end 
 
 	def user_params
 		params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
