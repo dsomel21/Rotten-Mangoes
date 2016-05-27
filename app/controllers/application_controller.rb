@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  helper_method :current_user
+  def impersonating?
+    session[:user_id].present?
+  end
+
+  helper_method :current_user, :impersonating?
 
 end

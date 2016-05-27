@@ -13,6 +13,7 @@ RottenMangoes::Application.routes.draw do
     resources :users do 
       member do 
         get 'impersonate' 
+        get 'end_impersonation'
       end
     end#, only: [:destroy]
   end

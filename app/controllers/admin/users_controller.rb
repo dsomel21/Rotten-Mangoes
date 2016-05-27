@@ -30,6 +30,12 @@ class Admin::UsersController < ApplicationController
 		redirect_to root_path
 	end 
 
+	def end_impersonation 
+		session[:user_id] = session[:temp]
+		session[:temp] = nil
+		redirect_to root_path
+	end
+
 	def user_params
 		params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
 	end	
